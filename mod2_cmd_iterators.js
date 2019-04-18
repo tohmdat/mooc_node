@@ -8,7 +8,7 @@ console.log(); //Línea en blanco
 console.log(`Route to node.js: ${a}` );
 
 //Ruta al fichero mod2_cmd_iterators.js (que contiene el programa)
-console.log(`Route to this file: ${b}.js` );
+console.log(`Route to this file: ${b}` );
 
 console.log(); //Línea en blanco
 
