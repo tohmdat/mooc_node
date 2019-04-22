@@ -54,13 +54,22 @@ function stock (title) {
             return null;
         },
 
-       /*addJSON (json_prods) {   // Add n to prod if code exists, or create new prod
+       addJSON (json_prods) {   // Add n to prod if code exists, or create new prod
             json_prods = JSON.parse(json_prods);
-            Object.keys(json_prods).forEach(elem => {
-                Object.keys(_stock).forEach()
-                if (elem)
+            Object.keys(json_prods).forEach(code => {
+                if (_stock[code]) {
+                    let nu = json_prods[code].n;
+                    _stock[code].n += nu;
+                    return _stock[code];
+                }
+                else { 
+                    let nu = json_prods[code].n;
+                    let desc = json_prods[code].desc;
+                    _stock[code] = {code, desc, n:nu};
+                    return _stock[code];
+                }
             })
-        },*/
+        },
 
        getJSON () {             // Returns content of _stock serialised as a JSON string
             return JSON.stringify( _stock );
@@ -96,10 +105,10 @@ console.log("_stock= " + my_shop.getJSON());
 console.log();	
 console.log();
 
-/*
-my_shop.addJSON('{	"a1":{"n":2},	"a2":{"code":"a2",	"desc":"knife",	"n":	3}}');	
-console.log(`->	my_shop.addJSON('{	"a1":{"n":2},	"a2":{"code":"a2",	"desc":"knife",	"n":	3}}'`);
-*/
+
+my_shop.addJSON('{"a1":{"n":2}, "a2":{"code":"a2", "desc":"knife", "n": 3}}');	
+console.log(`-> my_shop.addJSON('{ "a1":{"n":2}, "a2":{"code":"a2", "desc":"knife", "n": 3}}'`);
+
 
 console.log();	
 console.log("_stock= " + my_shop.getJSON());	
